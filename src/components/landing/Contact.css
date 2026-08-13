@@ -1,0 +1,34 @@
+/* ========================================
+   Contact/CTA Section Component CSS
+   ======================================== */
+
+.contact-section {
+  text-align: center;
+  background: linear-gradient(#f7f9fc, #ffffff);
+}
+
+.contact-section .kicker {
+  color: var(--b);
+  margin-bottom: 12px;
+}
+
+.contact-section h2 {
+  color: var(--n);
+}
+
+.contact-section p {
+  color: var(--m);
+  margin-bottom: 25px;
+}
+
+.contact-section .btn {
+  background: var(--n);
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(7, 17, 31, 0.1);
+}
+
+.contact-section .btn:hover {
+  background: #112238;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(7, 17, 31, 0.25);
+}

@@ -1,0 +1,61 @@
+/* ========================================
+   Applications Section Component CSS
+   ======================================== */
+
+.applications-section {
+  background: #ffffff;
+}
+
+.applications-section .dark {
+  background: var(--n);
+  color: white;
+  border-radius: 30px;
+  padding: 65px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(7, 17, 31, 0.2);
+}
+
+.applications-section .kicker {
+  color: #70aeff;
+  margin-bottom: 12px;
+}
+
+.applications-section h2 {
+  color: #ffffff;
+}
+
+.applications-section p {
+  color: #b9c7d9;
+  line-height: 1.7;
+  max-width: 680px;
+  font-size: 15px;
+}
+
+.applications-section .pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.applications-section .pill {
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  padding: 10px 15px;
+  border-radius: 30px;
+  color: #d7dfeb;
+  font-size: 13px;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.applications-section .pill:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+@media (max-width: 800px) {
+  .applications-section .dark {
+    padding: 40px 28px;
+  }
+}
