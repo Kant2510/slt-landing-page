@@ -1,6 +1,7 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import FeatureCard from './FeatureCard';
-import './Features.css';
 
 const techCards = [
   {
@@ -22,23 +23,26 @@ const techCards = [
 
 export default function Features() {
   return (
-    <section className="features" id="technology" aria-label="Technology">
-      <div className="features__inner wrap">
+    <section className="py-20 md:py-28 bg-[#f6f8fb]" id="technology" aria-label="Technology">
+      <div className="wrap">
         <motion.div
-          className="features__header"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="kicker">Technology</div>
-          <h2>Built for machines<br />that need to see.</h2>
-          <p className="lead">
+          <div className="text-[#2563eb] text-xs font-extrabold tracking-[0.22em] uppercase mb-3">
+            Technology
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.045em] text-[#07111f] leading-tight mb-4">
+            Built for machines<br />that need to see.
+          </h2>
+          <p className="text-[#64748b] text-base sm:text-lg leading-relaxed max-w-[680px]">
             A scalable imaging architecture for UAVs, robotics and autonomous systems.
           </p>
         </motion.div>
 
-        <div className="grid">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           {techCards.map((card, index) => (
             <FeatureCard
               key={card.iconText}

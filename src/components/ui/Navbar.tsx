@@ -1,8 +1,9 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
-import './Navbar.css';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -16,7 +17,9 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [mobileOpen]);
 
   const scrollToSection = (id: string) => {
@@ -28,27 +31,51 @@ export default function Navbar() {
   const navLinks = (
     <>
       <li>
-        <a className="navbar__link" onClick={() => scrollToSection('vision')} role="button" tabIndex={0}>
+        <a
+          className="font-medium text-[#d7dfeb]/85 hover:text-white transition-colors duration-200 cursor-pointer text-sm"
+          onClick={() => scrollToSection('vision')}
+          role="button"
+          tabIndex={0}
+        >
           About
         </a>
       </li>
       <li>
-        <a className="navbar__link" onClick={() => scrollToSection('technology')} role="button" tabIndex={0}>
+        <a
+          className="font-medium text-[#d7dfeb]/85 hover:text-white transition-colors duration-200 cursor-pointer text-sm"
+          onClick={() => scrollToSection('technology')}
+          role="button"
+          tabIndex={0}
+        >
           Technology
         </a>
       </li>
       <li>
-        <a className="navbar__link" onClick={() => scrollToSection('products')} role="button" tabIndex={0}>
+        <a
+          className="font-medium text-[#d7dfeb]/85 hover:text-white transition-colors duration-200 cursor-pointer text-sm"
+          onClick={() => scrollToSection('products')}
+          role="button"
+          tabIndex={0}
+        >
           Products
         </a>
       </li>
       <li>
-        <a className="navbar__link" onClick={() => scrollToSection('applications')} role="button" tabIndex={0}>
+        <a
+          className="font-medium text-[#d7dfeb]/85 hover:text-white transition-colors duration-200 cursor-pointer text-sm"
+          onClick={() => scrollToSection('applications')}
+          role="button"
+          tabIndex={0}
+        >
           Applications
         </a>
       </li>
       <li>
-        <button className="navbar__cta" onClick={() => scrollToSection('email-signup')} type="button">
+        <button
+          className="border border-white/30 px-4 py-2 rounded-full text-white text-xs font-semibold hover:border-white hover:bg-white/10 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+          onClick={() => scrollToSection('email-signup')}
+          type="button"
+        >
           Notify Me
         </button>
       </li>
@@ -58,24 +85,33 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        className={`navbar ${scrolled ? 'scrolled' : ''}`}
+        className={`fixed top-0 left-0 right-0 z-[100] h-[82px] flex items-center transition-all duration-300 ${
+          scrolled
+            ? 'scrolled-navbar-bg backdrop-blur-[20px] shadow-lg shadow-black/20'
+            : 'bg-transparent'
+        }`}
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="navbar__inner wrap">
-          <div className="navbar__logo" onClick={() => scrollToSection('hero')}>
-            <Logo width="130px" />
+        <div className="wrap flex items-center justify-between w-full">
+          <div
+            className="cursor-pointer"
+            onClick={() => scrollToSection('hero')}
+            role="button"
+            tabIndex={0}
+          >
+            <Logo width={130} />
           </div>
 
-          <ul className="navbar__links">
+          <ul className="hidden md:flex items-center gap-7 text-[#d7dfeb] text-sm list-none">
             {navLinks}
           </ul>
 
           <button
-            className="navbar__hamburger"
+            className="md:hidden text-white p-2 hover:opacity-80 transition-opacity cursor-pointer"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
             type="button"
@@ -89,21 +125,21 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="navbar__mobile-overlay"
+            className="fixed inset-0 z-[101] bg-[#07111f]/98 backdrop-blur-[30px] flex flex-col items-center justify-center gap-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
             <button
-              className="navbar__mobile-close"
+              className="absolute top-6 right-6 text-white p-2 hover:opacity-80 cursor-pointer"
               onClick={() => setMobileOpen(false)}
               aria-label="Close menu"
               type="button"
             >
               <X size={28} />
             </button>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
+            <ul className="list-none flex flex-col items-center gap-6 text-lg">
               {navLinks}
             </ul>
           </motion.div>

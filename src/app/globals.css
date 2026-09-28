@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-slate-dark: #07111f;
+  --color-accent-blue: #2563eb;
+  --color-accent-purple: #7c3aed;
+  --color-accent-amber: #f59e0b;
+  --color-muted-slate: #64748b;
+  --color-soft-bg: #f6f8fb;
+  --color-text-primary: #f0f0f5;
+  --color-text-secondary: #b9c7d9;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-space-grotesk), monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #0b1627;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+}
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07111f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #64748b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Layout wrap */
+.wrap {
+  width: min(1180px, 92%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Accent beam & line */
+.line-accent {
+  width: 190px;
+  height: 2px;
+  background: linear-gradient(90deg, #19a7ff, #7c3aed, #f59e0b);
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+/* Hero background */
+.hero-bg {
+  background: 
+    radial-gradient(circle at 75% 45%, rgba(37, 99, 235, 0.33), transparent 25%),
+    radial-gradient(
+      ellipse 100% 120% at 0% 0%,
+      #fff 0%,
+      #fff 5%,
+      #f5f5f5 8%,
+      #aaa 20%,
+      #333 42%,
+      #000 55%
+    );
+}
+
+.scrolled-navbar-bg {
+  background: radial-gradient(
+    ellipse 100% 650% at 0% 0%,
+    #fff 0%,
+    #fff 5%,
+    #f5f5f5 8%,
+    #aaa 20%,
+    #333 42%,
+    #000 55%
+  );
+}

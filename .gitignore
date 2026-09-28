@@ -23,3 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 public/gemini/*
+# Next.js
+.next/
+out/
+
+
+AGENTS.md
+CLAUDE.md
+

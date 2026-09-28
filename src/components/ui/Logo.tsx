@@ -1,17 +1,21 @@
-import logo from '../../assets/logo.png';
+import Image from 'next/image';
 
 interface LogoProps {
   className?: string;
-  width?: string;
+  width?: number;
+  height?: number;
 }
 
-export default function Logo({ className = '', width = '150px' }: LogoProps) {
+export default function Logo({ className = '', width = 140, height = 36 }: LogoProps) {
   return (
-    <img
-      src={logo}
+    <Image
+      src="/images/logo.png"
       alt="LUXION Logo"
-      className={className}
-      style={{ width, height: 'auto', display: 'block' }}
+      width={width}
+      height={height}
+      priority
+      className={`block ${className}`}
+      style={{ width: `${width}px`, height: 'auto' }}
     />
   );
 }
