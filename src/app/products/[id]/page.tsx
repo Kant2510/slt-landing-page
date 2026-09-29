@@ -1,10 +1,13 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { MOCK_PRODUCTS, getProductById, getRelatedProducts } from '@/data/products';
+import { getProductById, getRelatedProducts } from '@/data/products';
 import ProductOverview from '@/components/products/ProductOverview';
 import ProductTabs from '@/components/products/ProductTabs';
 import RelatedProducts from '@/components/products/RelatedProducts';
 import EmailSignup from '@/components/ui/EmailSignup';
+import { Product } from '@/types/product';
+
+export const revalidate = 3600; // revalidate after 1 hour
 
 interface ProductDetailPageProps {
   params: Promise<{
@@ -13,14 +16,26 @@ interface ProductDetailPageProps {
 }
 
 export async function generateStaticParams() {
-  return MOCK_PRODUCTS.map((product) => ({
+  const products = await fetch('https://caungeseokknvmeoqoto.supabase.co/storage/v1/object/public/saolatek/products.json')
+  if (!products.ok) {
+    return [];
+  }
+  const productList: Product[] = await products.json();
+  return productList.map((product) => ({
     id: product.id,
   }));
 }
 
 export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
   const { id } = await params;
-  const product = getProductById(id);
+  const products = await fetch('https://caungeseokknvmeoqoto.supabase.co/storage/v1/object/public/saolatek/products.json')
+  if (!products.ok) {
+    return {
+      title: 'Product Not Found — LUXION',
+    };
+  }
+  const productList: Product[] = await products.json();
+  const product = getProductById(productList, id);
 
   if (!product) {
     return {
@@ -48,13 +63,18 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
   const { id } = await params;
-  const product = getProductById(id);
+  const products = await fetch('https://caungeseokknvmeoqoto.supabase.co/storage/v1/object/public/saolatek/products.json')
+  if (!products.ok) {
+    notFound();
+  }
+  const productList: Product[] = await products.json();
+  const product = getProductById(productList, id);
 
   if (!product) {
     notFound();
   }
 
-  const relatedProducts = getRelatedProducts(product.id, 4);
+  const relatedProducts = getRelatedProducts(productList, product.id, 4);
 
   return (
     <div className="min-h-screen bg-white pt-28 pb-24">

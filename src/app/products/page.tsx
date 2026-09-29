@@ -1,25 +1,44 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { SortOption } from '@/types/product';
-import { MOCK_PRODUCTS, CATEGORIES } from '@/data/products';
+import { useState, useMemo, useEffect } from 'react';
+import { Product, SortOption } from '@/types/product';
+import { CATEGORIES } from '@/data/products';
 import ProductCard from '@/components/products/ProductCard';
 import ProductFilter from '@/components/products/ProductFilter';
 import Pagination from '@/components/products/Pagination';
 import { PackageSearch } from 'lucide-react';
 
+export const revalidate = 3600; // revalidate after 1 hour
 
 const ITEMS_PER_PAGE = 28; // 7 rows x 4 columns = 28 products max per page
 
 export default function ProductsPage() {
+  const [products, setProducts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedSort, setSelectedSort] = useState<SortOption>('recommend');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('https://caungeseokknvmeoqoto.supabase.co/storage/v1/object/public/saolatek/products.json');
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   // Filter and sort products
   const filteredAndSortedProducts = useMemo(() => {
-    let result = [...MOCK_PRODUCTS];
+    let result = [...products];
 
     // 1. Category filter
     if (selectedCategory !== 'All') {
@@ -81,6 +100,14 @@ export default function ProductsPage() {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     return filteredAndSortedProducts.slice(start, start + ITEMS_PER_PAGE);
   }, [filteredAndSortedProducts, currentPage]);
+
+  if (products.length === 0) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg text-muted-slate">Loading products...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white pt-28 pb-20">
