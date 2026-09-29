@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
+import Navbar from '@/components/ui/Navbar';
+import Footer from '@/components/ui/Footer';
 import './globals.css';
 
 const inter = Inter({
@@ -15,6 +17,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://luxion.ai'),
   title: 'LUXION — Intelligent Imaging & Vision Systems',
   description:
     'LUXION develops intelligent camera payload systems that enable autonomous machines to see, understand and act.',
@@ -56,8 +59,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="font-sans antialiased bg-white text-[#0b1627] selection:bg-[#2563eb] selection:text-white">
-        {children}
+      <body className="font-sans antialiased bg-white text-[#0b1627] selection:bg-[#2563eb] selection:text-white min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-1">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );

@@ -1,6 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 export default function Products() {
   const scrollToContact = () => {
@@ -65,13 +67,22 @@ export default function Products() {
             </div>
           </div>
 
-          <button
-            className="inline-block px-6 py-3.5 rounded-full font-bold text-sm bg-[#07111f] text-white hover:bg-[#112238] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 cursor-pointer"
-            type="button"
-            onClick={scrollToContact}
-          >
-            Request Product Info
-          </button>
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm bg-[#07111f] text-white hover:bg-[#1a2d48] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 cursor-pointer"
+            >
+              Explore Full Catalog
+              <ArrowRight size={16} />
+            </Link>
+            <button
+              className="inline-block px-6 py-3.5 rounded-full font-bold text-sm border border-[#07111f]/20 text-[#07111f] hover:border-[#07111f] hover:bg-[#f8fafc] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+              type="button"
+              onClick={scrollToContact}
+            >
+              Request Info
+            </button>
+          </div>
         </motion.div>
       </div>
     </section>
