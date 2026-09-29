@@ -73,7 +73,7 @@ export default function ProductsPage() {
     }
 
     return result;
-  }, [selectedCategory, selectedSort, searchQuery]);
+  }, [selectedCategory, selectedSort, searchQuery, products]);
 
   // Reset page when category or search changes
   const handleCategoryChange = (cat: string) => {
