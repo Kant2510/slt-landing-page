@@ -8,8 +8,6 @@ import ProductFilter from '@/components/products/ProductFilter';
 import Pagination from '@/components/products/Pagination';
 import { PackageSearch } from 'lucide-react';
 
-export const revalidate = 3600; // revalidate after 1 hour
-
 const ITEMS_PER_PAGE = 28; // 7 rows x 4 columns = 28 products max per page
 
 export default function ProductsPage() {
