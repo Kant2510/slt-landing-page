@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import Account from './Account';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -85,6 +86,9 @@ export default function Navbar() {
         >
           Notify Me
         </button>
+      </li>
+      <li>
+        <Account />
       </li>
     </>
   );
