@@ -25,13 +25,13 @@ const fadeUp = {
 export default function Hero() {
   return (
     <section
-      className="hero-bg relative min-h-screen text-white flex items-center justify-center overflow-hidden pt-[120px] pb-16"
+      className="hero-bg relative min-h-screen text-white flex items-center justify-center overflow-hidden pt-30 pb-16"
       id="hero"
       aria-label="Hero section"
     >
       {/* Diagonal light beam */}
       <div
-        className="absolute w-[650px] h-[3px] bg-gradient-to-r from-[#19a7ff] via-[#7c3aed] to-[#f59e0b] -right-[80px] top-[45%] -rotate-[28deg] shadow-[0_0_30px_#2994ff] pointer-events-none z-0 max-[800px]:-right-[300px] max-[800px]:top-[50%]"
+        className="absolute w-162.5 h-0.75 bg-linear-to-r from-[#19a7ff] via-accent-purple to-accent-amber -right-20 top-[45%] rotate-[-28deg] shadow-[0_0_30px_#2994ff] pointer-events-none z-0 max-[800px]:-right-75 max-[800px]:top-[50%]"
         aria-hidden="true"
       />
 
@@ -54,7 +54,7 @@ export default function Hero() {
             variants={fadeUp}
           >
             From{' '}
-            <span className="bg-gradient-to-r from-white via-[#62a7ff] to-[#f59e0b] bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-white via-[#62a7ff] to-accent-amber bg-clip-text text-transparent">
               Light
             </span>
             <br />
@@ -62,7 +62,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            className="text-base sm:text-lg leading-relaxed text-[#b9c7d9] max-w-[620px] mb-8 font-light"
+            className="text-base sm:text-lg leading-relaxed text-text-secondary max-w-155 mb-8 font-light"
             variants={fadeUp}
           >
             LUXION develops intelligent camera payload systems that enable autonomous machines to see, understand and eventually act.
@@ -71,19 +71,19 @@ export default function Hero() {
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-3 mb-8">
             <a
               href="#products"
-              className="inline-block px-6 py-3.5 rounded-full font-bold text-sm bg-white text-[#07111f] hover:bg-[#f0f0f5] hover:-translate-y-0.5 hover:shadow-xl transition-all duration-200 cursor-pointer"
+              className="inline-block px-6 py-3.5 rounded-full font-bold text-sm bg-white text-slate-dark hover:bg-text-primary hover:shadow-xl transition-all duration-200 cursor-pointer"
             >
               Explore Payloads
             </a>
             <a
               href="#vision"
-              className="inline-block px-6 py-3.5 rounded-full font-bold text-sm border border-white/30 text-white hover:border-white hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+              className="inline-block px-6 py-3.5 rounded-full font-bold text-sm border border-white/30 text-white hover:border-white hover:bg-white/10 transition-all duration-200 cursor-pointer"
             >
               Discover LUXION
             </a>
           </motion.div>
 
-          <motion.div className="w-full max-w-[580px] mb-4" variants={fadeUp}>
+          <motion.div className="w-full max-w-145 mb-4" variants={fadeUp}>
             <Countdown />
           </motion.div>
         </motion.div>

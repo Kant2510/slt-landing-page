@@ -23,7 +23,7 @@ const techCards = [
 
 export default function Features() {
   return (
-    <section className="py-20 md:py-28 bg-[#f6f8fb]" id="technology" aria-label="Technology">
+    <section className="py-20 md:py-28 bg-soft-bg" id="technology" aria-label="Technology">
       <div className="wrap">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -31,13 +31,13 @@ export default function Features() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="text-[#2563eb] text-xs font-extrabold tracking-[0.22em] uppercase mb-3">
+          <div className="text-accent-blue text-xs font-extrabold tracking-[0.22em] uppercase mb-3">
             Technology
           </div>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.045em] text-[#07111f] leading-tight mb-4">
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.045em] text-slate-dark leading-tight mb-4">
             Built for machines<br />that need to see.
           </h2>
-          <p className="text-[#64748b] text-base sm:text-lg leading-relaxed max-w-[680px]">
+          <p className="text-muted-slate text-base sm:text-lg leading-relaxed max-w-170">
             A scalable imaging architecture for UAVs, robotics and autonomous systems.
           </p>
         </motion.div>

@@ -131,7 +131,7 @@ export default function ProductOverview({ product }: ProductOverviewProps) {
           <div className="flex flex-col sm:flex-row gap-3 mb-6">
             <a
               href="mailto:sales@luxion.ai?subject=Inquiry%20for%20LUXION%20Payload"
-              className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-slate-dark text-white hover:bg-[#1a2d48] hover:-translate-y-0.5 shadow-lg shadow-black/10 transition-all duration-200"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-slate-dark text-white hover:bg-[#1a2d48] shadow-lg shadow-black/10 transition-all duration-200"
             >
               <Send size={16} />
               Request Formal Quote

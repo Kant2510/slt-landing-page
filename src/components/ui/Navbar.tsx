@@ -42,7 +42,7 @@ export default function Navbar() {
     <>
       <li>
         <button
-          className="font-medium text-[#d7dfeb]/85 hover:text-white transition-colors duration-200 cursor-pointer text-sm"
+          className="hover:text-zinc-600 transition-colors duration-200"
           onClick={() => handleNavClick('vision')}
           type="button"
         >
@@ -51,7 +51,7 @@ export default function Navbar() {
       </li>
       <li>
         <button
-          className="font-medium text-[#d7dfeb]/85 hover:text-white transition-colors duration-200 cursor-pointer text-sm"
+          className="hover:text-zinc-600 transition-colors duration-200"
           onClick={() => handleNavClick('technology')}
           type="button"
         >
@@ -62,16 +62,15 @@ export default function Navbar() {
         <Link
           href="/products"
           onClick={() => setMobileOpen(false)}
-          className={`font-medium transition-colors duration-200 cursor-pointer text-sm ${
-            pathname.startsWith('/products') ? 'text-[#38bdf8] font-bold' : 'text-[#d7dfeb]/85 hover:text-white'
-          }`}
+          className={`transition-colors duration-200 ${pathname.startsWith('/products') ? 'text-[#253eac] font-bold' : 'hover:text-zinc-600'
+            }`}
         >
           Products
         </Link>
       </li>
       <li>
         <button
-          className="font-medium text-[#d7dfeb]/85 hover:text-white transition-colors duration-200 cursor-pointer text-sm"
+          className="hover:text-zinc-600 transition-colors duration-200"
           onClick={() => handleNavClick('applications')}
           type="button"
         >
@@ -80,7 +79,7 @@ export default function Navbar() {
       </li>
       <li>
         <button
-          className="border border-white/30 px-4 py-2 rounded-full text-white text-xs font-semibold hover:border-white hover:bg-white/10 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+          className={`px-4 py-2 rounded-full text-xs transition-all duration-200 ${scrolled || pathname !== '/' ? 'border border-slate-dark/30 text-slate-dar hover:bg-slate-dark/10 hover:shadow-[0_0_15px_rgba(0,0,0,0.1)]' : 'border border-white/30 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]'}`}
           onClick={() => handleNavClick('email-signup')}
           type="button"
         >
@@ -93,11 +92,10 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-[100] h-[82px] flex items-center transition-all duration-300 ${
-          scrolled || pathname !== '/'
-            ? 'scrolled-navbar-bg backdrop-blur-[20px] shadow-lg shadow-black/20'
-            : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-100 h-20.5 flex items-center transition-all duration-300 ${scrolled || pathname !== '/'
+          ? 'bg-gray-100 text-slate-dark'// backdrop-blur-[20px]' // shadow-lg shadow-black/20'
+          : 'bg-transparent'
+          }`}
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -113,7 +111,7 @@ export default function Navbar() {
             <Logo width={130} />
           </Link>
 
-          <ul className="hidden md:flex items-center gap-7 text-[#d7dfeb] text-sm list-none">
+          <ul className={`hidden md:flex items-center gap-7 list-none font-medium ${scrolled || pathname !== '/' ? 'text-slate-dark' : 'text-white'} text-sm`}>
             {navLinks}
           </ul>
 
@@ -132,7 +130,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-[101] bg-[#07111f]/98 backdrop-blur-[30px] flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-101 bg-slate-dark/98 backdrop-blur-[30px] flex flex-col items-center justify-center gap-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

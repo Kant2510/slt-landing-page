@@ -41,8 +41,8 @@ export default function EmailSignup() {
   };
 
   return (
-    <div className="relative z-[1] py-4 w-full" id="email-signup">
-      <div className="max-w-[480px] mx-auto text-center">
+    <div className="relative z-1 py-4 w-full" id="email-signup">
+      <div className="max-w-120 mx-auto text-center">
         <AnimatePresence mode="wait">
           {state === 'success' ? (
             <motion.div
@@ -53,8 +53,8 @@ export default function EmailSignup() {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               <CheckCircle2 size={32} className="text-emerald-500" />
-              <p className="text-lg font-bold text-[#07111f]">You&apos;re on the list.</p>
-              <p className="text-sm text-[#64748b] font-normal">
+              <p className="text-lg font-bold text-slate-dark">You&apos;re on the list.</p>
+              <p className="text-sm text-muted-slate font-normal">
                 {successMsg || "We'll let you know when we're ready."}
               </p>
             </motion.div>
@@ -68,11 +68,10 @@ export default function EmailSignup() {
               transition={{ duration: 0.3 }}
             >
               <input
-                className={`flex-1 px-5 py-3.5 text-sm bg-white/70 border rounded-xl text-[#07111f] placeholder:text-[#64748b]/60 focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 outline-none backdrop-blur-md transition-all duration-200 ${
-                  state === 'error'
-                    ? 'border-red-500 ring-1 ring-red-500'
-                    : 'border-[#07111f]/30'
-                }`}
+                className={`flex-1 px-5 py-3.5 text-sm bg-white/70 border rounded-xl text-slate-dark placeholder:text-muted-slate/60 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 outline-none backdrop-blur-md transition-all duration-200 ${state === 'error'
+                  ? 'border-red-500 ring-1 ring-red-500'
+                  : 'border-slate-dark/30'
+                  }`}
                 type="email"
                 placeholder="Enter your email"
                 value={email}
@@ -85,7 +84,7 @@ export default function EmailSignup() {
                 id="email-input"
               />
               <button
-                className="px-6 py-3.5 text-sm font-bold text-white bg-[#07111f] hover:bg-[#152a45] rounded-xl transition-all duration-200 flex items-center justify-center gap-2 min-w-[130px] disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                className="px-6 py-3.5 text-sm font-bold text-white bg-slate-dark hover:bg-[#152a45] rounded-xl transition-all duration-200 flex items-center justify-center gap-2 min-w-32.5 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer shadow-md hover:shadow-lg"
                 type="submit"
                 disabled={state === 'loading'}
                 id="notify-button"

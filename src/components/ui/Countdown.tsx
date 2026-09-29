@@ -34,7 +34,7 @@ interface CountdownUnitProps {
 
 function CountdownUnit({ value, label }: CountdownUnitProps) {
   return (
-    <div className="flex flex-col items-center gap-2 p-3 sm:p-5 bg-white/[0.03] border border-white/[0.08] rounded-2xl backdrop-blur-md min-w-[76px] sm:min-w-[105px] hover:bg-white/[0.06] hover:border-white/20 hover:-translate-y-0.5 hover:shadow-[0_10px_25px_rgba(0,0,0,0.3)] transition-all duration-300 w-full sm:w-auto">
+    <div className="flex flex-col items-center gap-2 p-3 sm:p-5 bg-white/[0.03] border border-white/[0.08] rounded-2xl backdrop-blur-md min-w-[76px] sm:min-w-[105px] hover:bg-white/[0.06] hover:border-white/20 hover:shadow-[0_10px_25px_rgba(0,0,0,0.3)] transition-all duration-300 w-full sm:w-auto">
       <div className="font-display text-2xl sm:text-4xl font-bold leading-none tracking-tight text-white drop-shadow-[0_0_15px_rgba(25,167,255,0.25)]">
         <AnimatePresence mode="popLayout">
           <motion.span
